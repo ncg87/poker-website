@@ -1,0 +1,20 @@
+[package]
+name = "poker-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+poker_core = { path = "../poker_core" }
+actix-web = "4.0" # Server framework
+actix-cors = "0.7.0" # Middleware for CORS and actix-web
+serde = { version = "1.0", features = ["derive"] } # Serialization/Deserialization
+
+
+tokio = { version = "1.41.1", features = ["full"] } # Allows for asynchronous runtime, multithreading, and concurrency
+serde_json = "1.0" # Serialization/Deserialization specifically for JSON
+
+
+sqlx = { version = "0.8.2", features = ["postgres", "runtime-actix-native-tls"] } # SQL toolkit, works well with actix
+stripe-rust = "0.12.3" # For payment processing
+dotenv = "0.15" # For env variables
+chrono = "0.4" # For date and time
