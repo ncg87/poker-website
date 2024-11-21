@@ -1,2 +1,2 @@
 mod db;
-
+mod error;

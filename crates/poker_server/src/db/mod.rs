@@ -15,7 +15,7 @@ impl Database {
         let (client, connection) = tokio_postgres::connect(connection_string, NoTls).await?;
 
         // Spawn a task (async thread) to run the connection in the background
-        tokio::spawn(async move {
+        tokio::spawn(async move { // Needs to take ownership of connection
             if let Err(e) = connection.await {
                 eprintln!("Database connection error: {}", e);
             }
@@ -32,4 +32,6 @@ impl Database {
         &self.client
     }
 }
+
+// Going to implement actual TLS in the future here, with security, certificates, etc.
 
